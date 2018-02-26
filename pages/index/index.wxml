@@ -1,0 +1,86 @@
+<!--pages/index/index.wxml-->
+<scroll-view scroll-y enable-back-to-top bindscrolltolower="loadMoreArr">
+  <view class="top">
+    <view class="top_t">
+      <view class="top_t_l">
+        <image mode="widthFix" src="/image/index_logo.png"></image>
+      </view>
+      <view class="top_t_r">
+        <navigator class="top_t_r_1" open-type="navigate" url="/pages/ly/ly" hover-class="navigator-class">
+          <text class="iconfont icon-liuyan f_32"></text>
+          <text>给我留言</text>
+          <text class="iconfont icon-arrowright f_28"></text>
+        </navigator>
+        <view class="top_t_r_2" bindtap="showDeny">
+          <text class="iconfont icon-weizhi f_32"></text>
+          <text>{{address}}</text>
+          <!-- <text class="iconfont icon-iconfont-xiasanjiao f_32"></text> -->
+        </view>
+      </view>
+    </view>
+    <view class="top_b" hover-class="navigator-class" bindtap="ssShow">
+      <text class="iconfont icon-sousuo f_36"></text>
+      <text class="f_28">{{ss_key !== "" ? ss_key : '输入搜索内容'}}</text>
+    </view>
+  </view>
+
+  <view class="no_data {{no_data_hide}}" wx:if="{{!listArr.length}}">
+    <view class="no_data_image">
+      <image mode="widthFix" src="/image/no_data.png"></image>
+    </view>
+    <view class="no_data_text">
+      很抱歉，没有对应内容，请至搜索界面重新设置搜索关键词，或在搜索取界面点击“取消”即可显示全部内容
+    </view>
+  </view>
+  <view class="list_box" wx:if="{{listArr.length}}">
+    <navigator wx:for="{{listArr}}" class="list" open-type="navigate" url="/pages/detail/detail?hid={{item.id}}" navigator-class="navigator-hover">
+      <view class="list_l">
+        <image mode="scaleToFill" lazy-load="{{lazyLoad}}" wx:if="{{item.headsmall}}" src="{{item.headsmall}}"></image>
+      </view>
+      <view class="list_c">
+        <view class="list_c_1 f_32">{{item.hospital}}</view>
+        <view>
+          <text wx:if="{{item.rank_text}}">{{item.rank_text}}</text>
+          <text wx:if="{{item.updatetime}}">{{item.updatetime}}</text>
+        </view>
+        <view class="list_c_3" wx:if="{{item.descript}}">{{item.descript}}</view>
+        <view class="list_c_4">
+          <text>剩余床位：{{item.emptybed}}位</text>
+          <text>距离：{{item.distance}}km</text>
+        </view>
+      </view>
+      <view class="list_r">
+        <text class="iconfont icon-arrowright"></text>
+      </view>
+    </navigator>
+
+    <view class="showLast {{showLastHide}}">已到页面最底部啦~~~</view>
+  </view>
+
+  <view class="bottom">
+    <view class="bottom_list f_28 {{listcur}}" wx:for="{{navList}}" data-type="{{item.type}}" bindtap="changeDate">
+      <text class="iconfont f_36 {{item.iconClass}}"></text>
+      {{item.name}}
+    </view>
+  </view>
+</scroll-view>
+
+<view class="ss_box {{ss_hide}}">
+  <view class="ss_top">
+    <view class="ss_input_box">
+      <text class="iconfont icon-sousuo f_36" bindtap="sendSs"></text>
+      <input type="text" confirm-type="search" bindinput="setInput" placeholder="请输入搜索内容"  value="{{ss_key}}" bindconfirm="sendSs"/>
+    </view>
+    <view class="ss_input_qx" bindtap="ssHide">取消</view>
+  </view>
+
+  <view class="ss_rm_bt green">热门搜索</view>
+  <view class="ss_linkArr">
+    <view bindtap="sendSs" data-key="{{item.name}}" hover-class="navigator-hover" wx:for="{{rm}}">{{item.name}}</view>
+  </view>
+
+  <view class="ss_ls_bt">搜索历史</view>
+  <view class="ss_linkArr">
+    <view bindtap="sendSs" data-key="{{item}}" hover-class="navigator-hover" wx:for="{{ls}}">{{item}}</view>
+  </view>
+</view>
