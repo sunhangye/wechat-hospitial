@@ -1,1 +1,28 @@
 /* pages/detail/detail.wxss */
+page{ color: #666;}
+.top{ margin-bottom: 15rpx; border-bottom: #00C3CF solid 6rpx; position: relative;}
+.top image{ width: 100%;}
+.top navigator{ width: 44rpx; height: 44rpx; line-height: 44rpx; text-align: center; color: #fff; border-radius: 50%; background-color: rgba(0,0,0,.5); position: absolute; left: 20rpx; top: 20rpx;}
+
+.page_body{ padding: 0 25rpx;}
+
+.page_body_top{ padding-bottom: 25rpx; border-bottom: #e9e9e9 solid 2rpx;}
+.show_name{ padding: 16rpx 0; color: #333;}
+.page_body_top .iconfont{ margin-right: 8rpx;}
+
+.msglist{ display: flex; flex-direction: row; flex-wrap: wrap;}
+.msglist > view{ width: 45%; flex-grow: 1; padding: 16rpx 0 16rpx 17%; border-bottom: #e9e9e9 solid 2rpx; box-sizing: border-box;}
+.msglist > view:nth-child(1) , .msglist view:nth-child(3){ border-right: #e9e9e9 solid 2rpx;} 
+.msglist > view:last-child{ line-height: 76rpx;}
+.msglist .iconfont{ margin-right: 8rpx;}
+.msglist > view:last-child .iconfont{ font-size: 56rpx;}
+
+
+.detail_box{ padding: 25rpx 0; border-bottom: #e9e9e9 solid 2rpx;}
+.detail_box > view:first-child{ margin-bottom: 10rpx; color: #333;}
+.detail_box > view:last-child{ line-height: 32rpx;}
+.detail_box image{ width: 100%;}
+.detail_box image:not(:last-child){ margin-bottom: 15rpx;}
+
+map{ width: 100%; height: 800rpx; margin-bottom: 30rpx;}
+

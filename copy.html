@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+</head>
+
+<body>
+  <!-- <input id="demoInput" value="hello world"> -->
+  <button id="btn">点我复制</button>
+</body>
+<script type="text/javascript">
+  const btn = document.querySelector('#btn');
+  // btn.addEventListener('click', () => {
+  //   const input = document.querySelector('#demoInput');
+  //   input.select();
+  //   if (document.execCommand('copy')) {
+  //     document.execCommand('copy');
+  //     console.log('复制成功');
+  //   }
+  // })
+
+btn.addEventListener('click',() => {
+	const input = document.createElement('input');
+    input.setAttribute('readonly', 'readonly');
+    input.setAttribute('value', 'hello world11');
+    document.body.appendChild(input);
+	input.select();
+	if (document.execCommand('copy')) {
+		document.execCommand('copy');
+		console.log('复制成功');
+	}
+    document.body.removeChild(input);
+})
+
+</script>
+
+</html>

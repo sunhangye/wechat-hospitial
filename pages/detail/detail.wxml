@@ -1,2 +1,62 @@
 <!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<view class="top">
+    <image mode="widthFix" src="{{yy_msg.headsmall}}"></image>
+    <navigator open-type="navigateBack" delta="1" url=""><text class="iconfont icon-zuojiantou"></text></navigator>
+</view>
+
+<view class="page_body">
+    <view class="page_body_top">
+        <view class="show_name f_32">{{yy_msg.hospital}}</view>
+        <view><text class="iconfont icon-weizhi f_32"></text>{{yy_msg.address}}</view>
+        <view><text class="iconfont icon-shijian f_32"></text>{{yy_msg.update_time}}床位表数据来源合肥市卫生与计划生育委员会，详请电话核实</view>
+    </view>
+
+    <view class="msglist">
+        <view>
+            <view><text class="iconfont icon-jiaoyin f_32"></text>已住产妇</view>
+            <view><text class="grey">{{yy_msg.checkedbed}}</text>位</view>
+        </view>
+        <view>
+            <view><text class="iconfont icon-shuangxiangjiantou f_32"></text>开放床位</view>
+            <view><text class="grey">{{yy_msg.openbed}}</text>位</view>
+        </view>
+        <view>
+            <view><text class="iconfont icon-jia f_32"></text>加床数</view>
+            <view><text class="grey">{{yy_msg.addbed}}</text>位</view>
+        </view>
+        <view>
+            <view><text class="iconfont icon-kong f_32"></text>空床数</view>
+            <view><text class="grey">{{yy_msg.emptybed}}</text>位</view>
+        </view>
+        <view>
+            <view><text class="iconfont icon-dianhua f_32"></text>电话</view>
+            <view><text class="grey">{{yy_msg.mobile}}</text></view>
+        </view>
+        <view>
+            <view data-tel="{{yy_msg.mobile}}" bindtap="boHao"><text class="iconfont icon-dianhua green"></text>点击拨打</view>
+        </view>
+    </view>
+
+    <view class="detail_box">
+        <view class="f_28 green"><view class="fr green">{{yy_msg.rank_text}}</view>
+        医院简介</view>
+        <view>{{yy_msg.descript}}</view>
+    </view>
+
+
+    <view class="detail_box">
+        <view class="f_28">医院环境</view>
+        <view>
+        <image wx:for="{{yy_msg.env}}" mode="widthFix" src="{{item}}"></image>
+        </view>
+    </view>
+
+    <view class="detail_box">
+        <view class="f_28">医院地址</view>
+        <map longitude="{{startlongitude}}" latitude="{{endlongitude}}" markers="{{markers}}" scale="12" show-location polyline="{{polyline}}" bindtap="controltap" />
+    </view>
+
+    
+
+</view>
+
